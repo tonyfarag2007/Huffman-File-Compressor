@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 4.1)
-project(untitled3 C)
+cmake_minimum_required(VERSION 3.20)
+project(Huffman CXX)
 
-set(CMAKE_C_STANDARD 23)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled3 main.c
-        tree.c)
+add_executable(Huffman main.cpp
+)
