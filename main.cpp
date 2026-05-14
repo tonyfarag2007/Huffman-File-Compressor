@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "HuffmanTree.h"
 int main() {
     int frequency[256] = {0};
     std::ifstream file("C:\\Users\\tonyw\\Downloads\\TicTacToeProject\\stats.txt", std::ios_base::binary);
@@ -13,5 +14,4 @@ int main() {
             std::cout << (unsigned char)i << ": " << frequency[i] << std::endl;
         }
     }
-
 }
