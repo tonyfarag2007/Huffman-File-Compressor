@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "HuffmanTree.h"
+#include <map>
 int main() {
     int frequency[256] = {0};
     std::ifstream file("C:\\Users\\tonyw\\Downloads\\TicTacToeProject\\stats.txt", std::ios_base::binary);
@@ -10,8 +12,7 @@ int main() {
         while (file.get(ch)) {
             frequency[(unsigned char)ch]++;
         }
-        for (int i = 0; i < std::size(frequency); i++) {
-            std::cout << (unsigned char)i << ": " << frequency[i] << std::endl;
-        }
     }
+
+    buildLeafNodes(frequency, 256);
 }
