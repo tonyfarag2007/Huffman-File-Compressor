@@ -1,24 +1,30 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-#include <map>
 struct Node {
     char character;
     int frequency;
     Node* left;
     Node* right;
+    Node(char character, int frequency, Node* left, Node* right) {
+        this->character = character;
+        this->frequency = frequency;
+        this->left = left;
+        this->right = right;
+    }
 };
-std::vector<Node> buildLeafNodes(int frequency[], int size) {
-    std::priority_queue<int> pq;
-    std::vector<Node> leafNodes;
+struct Compare {
+    bool operator()(Node* a, Node* b) {
+        return a->frequency > b->frequency;
+    }
+};
+std::priority_queue<Node*, std::vector<Node*>, Compare> buildLeafNodes(int frequency[], int size) {
+    std::priority_queue<Node*, std::vector<Node*>, Compare> pq;
     for (int i = 0; i < size; i++) {
         if (frequency[i] > 0) {
-            pq.push(frequency[i]);
-            leafNodes.push_back({static_cast<char>(i), frequency[i], nullptr, nullptr});
+            Node *node = new Node(static_cast<char>(i), frequency[i], nullptr, nullptr);
+            pq.push(node);
         }
     }
-    for (int i = 0; i < leafNodes.size(); i++) {
-        std::cout << leafNodes[i].character << " ";
-    }
-    return leafNodes;
+    return pq;
 }

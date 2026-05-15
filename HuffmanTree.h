@@ -6,6 +6,15 @@ struct Node {
     int frequency;
     Node* left;
     Node* right;
+    Node(char character, int frequency, Node* left, Node* right) {
+        this->character = character;
+        this->frequency = frequency;
+        this->left = left;
+        this->right = right;
+    }
 };
-std::vector<Node> buildLeafNodes(int [], int);
+std::priority_queue<Node*> buildLeafNodes(int [], int);
+struct Compare {
+    bool operator()(Node*, Node*);
+};
 #endif //HUFFMAN_HUFFMANTREE_H
