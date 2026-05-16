@@ -8,4 +8,6 @@ add_executable(Huffman main.cpp
         HuffmanTree.h
         FrequencyCodes.cpp
         FrequencyCodes.h
+        BitStreamWriter.cpp
+        BitStreamWriter.h
 )

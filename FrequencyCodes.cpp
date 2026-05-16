@@ -1,7 +1,5 @@
 #include "FrequencyCodes.h"
-
 #include <iostream>
-
 #include "HuffmanTree.h"
 #include <map>
 #include <ostream>

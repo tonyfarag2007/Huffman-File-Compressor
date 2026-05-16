@@ -1,6 +1,5 @@
 #ifndef HUFFMAN_HUFFMANTREE_H
 #define HUFFMAN_HUFFMANTREE_H
-#include <queue>
 class Node {
 public:
     char character;
