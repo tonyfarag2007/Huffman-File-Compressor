@@ -13,7 +13,7 @@ struct Node {
         this->right = right;
     }
 };
-std::priority_queue<Node*> buildLeafNodes(int [], int);
+Node* buildHuffmanTree(int [], int);
 struct Compare {
     bool operator()(Node*, Node*);
 };
