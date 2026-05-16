@@ -25,4 +25,6 @@ int main() {
     std::cout << "Compressed File Size: " << std::filesystem::file_size(compressedFilePath) << " bytes" << std::endl;
     std::cout << "That is a " << 100.0 - (static_cast<double>(std::filesystem::file_size(compressedFilePath)) /
         static_cast<double>(std::filesystem::file_size(originalFilePath)) * 100) << "% decrease!" <<std::endl;
+    file.close();
+    return 0;
 }
