@@ -10,7 +10,7 @@ int main() {
     char ch;
     if (file.is_open()) {
         while (file.get(ch)) {
-            frequency[(unsigned char)ch]++;
+            frequency[static_cast<unsigned char>(ch)]++;
         }
     }
 
