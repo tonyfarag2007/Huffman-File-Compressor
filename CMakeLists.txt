@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Huffman main.cpp
         HuffmanTree.cpp
         HuffmanTree.h
+        FrequencyCodes.cpp
+        FrequencyCodes.h
 )

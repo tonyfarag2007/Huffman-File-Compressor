@@ -1,17 +1,14 @@
 #ifndef HUFFMAN_HUFFMANTREE_H
 #define HUFFMAN_HUFFMANTREE_H
 #include <queue>
-struct Node {
+class Node {
+public:
     char character;
     int frequency;
     Node* left;
     Node* right;
-    Node(char character, int frequency, Node* left, Node* right) {
-        this->character = character;
-        this->frequency = frequency;
-        this->left = left;
-        this->right = right;
-    }
+    Node(char character, int frequency, Node* left, Node* right);
+    Node(int frequency, Node* left, Node* right);
 };
 Node* buildHuffmanTree(int [], int);
 struct Compare {
