@@ -12,7 +12,9 @@ int main() {
     std::vector<int> frequency(256, 0);
     std::filesystem::path originalFilePath;
     std::cout << "Enter the path to the file: ";
-    std::cin >> originalFilePath;
+    std::string buffer;
+    std::getline(std::cin, buffer);
+    originalFilePath = std::filesystem::path(buffer);
     std::string fileExtension = originalFilePath.extension().string();
     std::ifstream file(originalFilePath, std::ios_base::binary);
     std::filesystem::path compressedFilePath = originalFilePath.parent_path().string() + "\\" + originalFilePath.stem().string() + "(compressed)";
@@ -24,6 +26,9 @@ int main() {
         while (file.get(ch)) {
             frequency[static_cast<unsigned char>(ch)]++;
         }
+    }
+    else {
+        std::cout << "CRITICAL: Could not open file: " << originalFilePath << std::endl;
     }
     for (int i = 0; i < 256; i++) {
         if (frequency[i] > 0) chCount++;
