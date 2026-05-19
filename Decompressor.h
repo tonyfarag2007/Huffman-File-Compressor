@@ -1,0 +1,8 @@
+//
+// Created by tonyw on 2026-05-19.
+//
+
+#ifndef HUFFMAN_DECOMPRESSOR_H
+#define HUFFMAN_DECOMPRESSOR_H
+
+#endif //HUFFMAN_DECOMPRESSOR_H

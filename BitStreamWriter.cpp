@@ -2,13 +2,21 @@
 #include <fstream>
 #include <map>
 #include <filesystem>
-void writeCompressedFile(std::ifstream *inputFile, std::string filePath, std::map<char, std::string> &codes) {
-    std:: ofstream compressedFile(filePath, std::ios::binary);
-    char ch;
+void writeHeader(std::ofstream &compressedFile, std::string fileExtension, int frequency[], int size, int chCount) {
+    compressedFile.put(static_cast<char>(fileExtension.length()));
+    compressedFile.write(fileExtension.c_str(), fileExtension.length() * sizeof(char));
+    compressedFile.write(reinterpret_cast<char*>(frequency), chCount * sizeof(int));
+    compressedFile.write(reinterpret_cast<char*>(&chCount), sizeof(int));
+}
+void writeCompressedFile(std::ifstream *inputFile, std::string filePath,
+    std::map<char, std::string> &codes, std::string fileExtension, int frequency[], int size, int chCount) {
+    std::ofstream compressedFile(filePath, std::ios::binary);
+    writeHeader(compressedFile, fileExtension, frequency, size, chCount);
+    char character;
     unsigned char buffer = '\0';
     int bitCount = 0;
-    while (inputFile->get(ch)) {
-        std::string code = codes[ch];
+    while (inputFile->get(character)) {
+        std::string code = codes[character];
         for (char c : code) {
             buffer <<= 1;
                 if (c == '1') {

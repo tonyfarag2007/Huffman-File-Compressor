@@ -10,4 +10,6 @@ add_executable(Huffman main.cpp
         FrequencyCodes.h
         BitStreamWriter.cpp
         BitStreamWriter.h
+        Decompressor.cpp
+        Decompressor.h
 )
