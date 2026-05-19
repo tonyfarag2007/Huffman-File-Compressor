@@ -2,14 +2,20 @@
 #include <fstream>
 #include <map>
 #include <filesystem>
-void writeHeader(std::ofstream &compressedFile, std::string fileExtension, int frequency[], int size, int chCount) {
+void writeHeader(std::ofstream &compressedFile, std::string fileExtension, std::vector<int> frequency, int size, int chCount) {
     compressedFile.put(static_cast<char>(fileExtension.length()));
     compressedFile.write(fileExtension.c_str(), fileExtension.length() * sizeof(char));
-    compressedFile.write(reinterpret_cast<char*>(frequency), chCount * sizeof(int));
     compressedFile.write(reinterpret_cast<char*>(&chCount), sizeof(int));
+    for (int i = 0; i < frequency.size(); i++) {
+        if (frequency.at(i) > 0) {
+            unsigned char asciiValue = static_cast<unsigned char>(i);
+            compressedFile.put(asciiValue);
+            compressedFile.write(reinterpret_cast<char*>(&frequency.at(i)), sizeof(int));
+        }
+    }
 }
 void writeCompressedFile(std::ifstream *inputFile, std::string filePath,
-    std::map<char, std::string> &codes, std::string fileExtension, int frequency[], int size, int chCount) {
+    std::map<char, std::string> &codes, std::string fileExtension, std::vector<int> frequency, int size, int chCount) {
     std::ofstream compressedFile(filePath, std::ios::binary);
     writeHeader(compressedFile, fileExtension, frequency, size, chCount);
     char character;

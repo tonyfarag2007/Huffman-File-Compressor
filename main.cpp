@@ -2,13 +2,14 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <vector>
 #include "HuffmanTree.h"
 #include "FrequencyCodes.h"
 #include "BitStreamWriter.h"
 #include <map>
 
 int main() {
-    int frequency[256] = {0};
+    std::vector<int> frequency(256, 0);
     std::filesystem::path originalFilePath;
     std::cout << "Enter the path to the file: ";
     std::cin >> originalFilePath;
@@ -22,10 +23,10 @@ int main() {
     if (file.is_open()) {
         while (file.get(ch)) {
             frequency[static_cast<unsigned char>(ch)]++;
-            if (frequency[static_cast<unsigned char>(ch)]>0) {
-                chCount++;
-            }
         }
+    }
+    for (int i = 0; i < 256; i++) {
+        if (frequency[i] > 0) chCount++;
     }
     file.clear();
     file.seekg(0, std::ios::beg);

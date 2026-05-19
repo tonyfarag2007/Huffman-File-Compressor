@@ -18,7 +18,7 @@ bool Compare::operator()(Node* a, Node* b) {
     return a -> frequency > b -> frequency;
 }
 
-Node* buildHuffmanTree(int frequency[], int size) {
+Node* buildHuffmanTree(std::vector<int> frequency, int size) {
     std::priority_queue<Node*, std::vector<Node*>, Compare> pq;
     for (int i = 0; i < size; i++) {
         if (frequency[i] > 0) {
