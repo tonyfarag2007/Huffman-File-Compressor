@@ -9,7 +9,9 @@ public:
     Node* right;
     Node(char character, int frequency, Node* left, Node* right);
     Node(int frequency, Node* left, Node* right);
+    ~Node();
 };
+
 Node* buildHuffmanTree(std::vector<int>, int);
 struct Compare {
     bool operator()(Node*, Node*);

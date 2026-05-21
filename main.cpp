@@ -35,7 +35,9 @@ int main() {
     }
     file.clear();
     file.seekg(0, std::ios::beg);
-    generateCodes(buildHuffmanTree(frequency, 256), "", frequencyCodes);
+    Node *rootNode = buildHuffmanTree(frequency, 256);
+    generateCodes(rootNode, "", frequencyCodes);
+    delete rootNode;
     writeCompressedFile(&file, compressedFilePath.string(),frequencyCodes,
         originalFilePath.extension().string(), frequency, 256, chCount);
     std::cout << "File Size: "<< std::filesystem::file_size(originalFilePath) << " bytes" << std::endl;

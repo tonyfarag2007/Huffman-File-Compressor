@@ -13,7 +13,10 @@ Node::Node(int frequency, Node* left, Node* right) {
     this->left = left;
     this->right = right;
 }
-
+Node::~Node() {
+    delete left;
+    delete right;
+}
 bool Compare::operator()(Node* a, Node* b) {
     return a -> frequency > b -> frequency;
 }
