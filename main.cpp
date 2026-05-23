@@ -8,19 +8,27 @@
 #include "BitStreamWriter.h"
 #include "Decompressor.h"
 #include <map>
-
 int main() {
-    std::vector<int> frequency(256, 0);
+    std::vector<int>frequency(256, 0);
     char choice;
     std::cout << "(C)ompress or (D)ecompress?"<<std::endl;
     std::cin >> choice;
+    while (choice != 'C' && choice != 'c' && choice != 'D' && choice != 'd') {
+        std::cout << "Invalid Choice, try again: " << std::endl;
+        std::cin >> choice;
+    }
     if (choice == 'D' || choice == 'd') {
         std::cout<<"Enter the path to the compressed .huff file" <<std::endl;
         std::string compressedFilePath;
         std::cin >> compressedFilePath;
+        std::filesystem::path originalFilePath = compressedFilePath;
         std::ifstream file(compressedFilePath, std::ios_base::binary);
         if (!file.is_open()) {
-            std::cout << "Failed to open: " << compressedFilePath << std::endl;
+            std::cout << "ERROR: failed to open: " << compressedFilePath << std::endl;
+            exit(1);
+        }
+        if (originalFilePath.extension() != ".huff") {
+            std::cout <<"ERROR: not a .huff file!" << std::endl;
             exit(1);
         }
         decompressFile(file, compressedFilePath);
@@ -47,6 +55,7 @@ int main() {
         }
         else {
             std::cout << "CRITICAL: Could not open file: " << originalFilePath << std::endl;
+            exit(1);
         }
         int totalCharacters = 0;
         for (int i = 0; i < 256; i++) {
@@ -64,6 +73,7 @@ int main() {
         std::cout << "Compressed File Size: " << std::filesystem::file_size(compressedFilePath) << " bytes" << std::endl;
         std::cout << "That is a " << 100.0 - (static_cast<double>(std::filesystem::file_size(compressedFilePath)) /
             static_cast<double>(std::filesystem::file_size(originalFilePath)) * 100) << "% decrease!" <<std::endl;
+
         file.close();
     }
     return 0;

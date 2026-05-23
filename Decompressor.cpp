@@ -68,4 +68,5 @@ void decompressFile(std::ifstream& compressedFile, std::string filePath) {
     }
     delete pq.top();
     restoredFile.close();
+    std::cout<<"File successfully decompressed!"<<std::endl;
 }
