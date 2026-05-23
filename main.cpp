@@ -43,12 +43,16 @@ int main() {
         originalFilePath = std::filesystem::path(buffer);
         std::string fileExtension = originalFilePath.extension().string();
         std::ifstream file(originalFilePath, std::ios_base::binary);
-        std::filesystem::path compressedFilePath = originalFilePath.parent_path().string() + "\\" + originalFilePath.stem().string() + "(compressed)";
+        std::filesystem::path compressedFilePath = originalFilePath.parent_path() / (originalFilePath.stem().string() + "(compressed)");
         compressedFilePath.replace_extension(".huff");
         char ch;
         int chCount = 0;
         std::map<char, std::string> frequencyCodes;
         if (file.is_open()) {
+            if (std::filesystem::file_size(originalFilePath) < 1000) {
+                std::cout<<"File is too small";
+                exit(1);
+            }
             while (file.get(ch)) {
                 frequency[static_cast<unsigned char>(ch)]++;
             }
