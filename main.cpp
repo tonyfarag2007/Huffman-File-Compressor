@@ -20,7 +20,8 @@ int main() {
     if (choice == 'D' || choice == 'd') {
         std::cout<<"Enter the path to the compressed .huff file" <<std::endl;
         std::string compressedFilePath;
-        std::cin >> compressedFilePath;
+        std::cin.ignore();
+        std::getline(std::cin, compressedFilePath);
         std::filesystem::path originalFilePath = compressedFilePath;
         std::ifstream file(compressedFilePath, std::ios_base::binary);
         if (!file.is_open()) {
