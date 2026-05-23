@@ -10,7 +10,7 @@ Huffman coding is a lossless data compression algorithm that assigns shorter bin
 
 - **Compress any file type**: works on text files, images (BMP, PNG), and any other binary file
 - **Lossless**: decompressed files are bit-for-bit identical to the originals
-- **Self-describing compressed format**: the `.huff` file stores everything needed to reconstruct the original, including the original file extension and frequency table
+- **Self-describing compressed format**: the `.huff` file stores everything needed to reconstruct the original, including the original file extension and frequency table, automatic serialization with no external metadata required
 - **Accurate padding handling**: stores total character count in the header to avoid phantom bits corrupting the end of decompressed files
 - **Dynamic output naming**: decompressed files are restored to their original filename and extension automatically
 - **Minimum file size enforcement**: rejects files under 1000 bytes, since the header overhead would make the compressed file larger than the original
