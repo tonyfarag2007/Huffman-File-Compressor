@@ -84,7 +84,6 @@ Output: `photo.bmp` restored in the same directory.
 
 ## Why It's Useful
 
-- Demonstrates a practical application of a fundamental algorithm taught in every CS program
 - Works on real binary data, not just text — most toy implementations don't handle this correctly
 - The compressed format is self-contained and portable — no external configuration needed to decompress
 - Useful for understanding how real compression tools like ZIP and DEFLATE work under the hood at the entropy coding layer
