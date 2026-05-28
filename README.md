@@ -1,6 +1,6 @@
 # Huffman File Compressor and Decompressor
 
-A lossless file compression tool built in C++ that implements Huffman coding to compress and decompress any file type, including binary files like images.
+A lossless file compression and decompression tool built in C++ that implements Huffman coding to compress and decompress any file type, including binary files like images.
 
 ## What is Huffman Compression?
 
@@ -20,7 +20,7 @@ Huffman coding is a lossless data compression algorithm that assigns shorter bin
 
 ### Compression
 1. Reads the input file and counts the frequency of every byte value (0–255 in complete ASCII)
-2. Builds a Huffman tree using a min-heap priority queue — less frequent bytes end up deeper in the tree, more frequent bytes closer to the root
+2. Builds a Huffman tree using a min-heap priority queue. Less frequent bytes end up deeper in the tree, more frequent bytes closer to the root
 3. Traverses the tree to generate a unique binary code for each byte
 4. Writes a binary header containing:
    - Original file extension length and string
