@@ -24,12 +24,12 @@ int main() {
         std::getline(std::cin, compressedFilePath);
         std::filesystem::path originalFilePath = compressedFilePath;
         std::ifstream file(compressedFilePath, std::ios_base::binary);
-        if (!file.is_open()) {
-            std::cout << "ERROR: failed to open: " << compressedFilePath << std::endl;
-            exit(1);
-        }
         if (originalFilePath.extension() != ".huff") {
             std::cout <<"ERROR: not a .huff file!" << std::endl;
+            exit(1);
+        }
+        if (!file.is_open()) {
+            std::cout << "ERROR: failed to open: " << compressedFilePath << std::endl;
             exit(1);
         }
         decompressFile(file, compressedFilePath);
