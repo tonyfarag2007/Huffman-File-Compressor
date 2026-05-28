@@ -89,5 +89,4 @@ Output: `photo.bmp` restored in the same directory.
 - The compressed format is self-contained and portable, no external configuration needed to decompress due to automatic metadata
 - Useful for understanding how real compression tools like ZIP and DEFLATE work under the hood at the entropy coding layer
 
-Note: Some file types do not get compressed very well or even increase in size due to the nature of the file types. Some
-file types (such as PDF and PNG files) already undergo compression algorithms.
+Note: Compression effectiveness varies by file type. Files that already use internal compression (such as PNG and PDF) will see little to no size reduction, and may increase in size slightly due to header overhead.
